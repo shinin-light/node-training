@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Template page</h2>
+<p>Write something below and click the button</p>
+<textarea id="input"></textarea>
+<p id="output"></p>
+<button type="button" onclick="echo()">Echo</button>
+
+<script type="text/javascript">
+async function send(value) {
+  console.log(`Sending`, value);
+  try {
+  	let request = JSON.stringify(value);
+  	let result = await fetch("http://localhost:3000/echo", {
+	  method: 'POST',
+	  headers: {'Content-Type': 'application/json'},
+      body: request,
+    });
+    if (!result.ok) throw new Error('Request failed');
+    result = (await result.json()).json;
+    console.log(`Received`, result);
+    return result;
+  } catch (error) {
+  	console.error(error);
+  }
+}
+
+function echo() {
+	const value = document.getElementById("input").value;
+    send({
+    	content: value
+    }).then(result => {
+    	document.getElementById("output").innerHTML = result.content;
+	});
+}
+</script>
+
+</body>
+</html> 
