@@ -4,4 +4,4 @@
 - `cd node-training` 
 - `npm i`
 - `npm run start`
-- Open a webpage on (http://localhost:3456/)[http://localhost:3456/]
+- Open a webpage on [http://localhost:3456/](http://localhost:3456/)
