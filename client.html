@@ -14,12 +14,12 @@ async function send(value) {
   try {
   	let request = JSON.stringify(value);
   	let result = await fetch("http://localhost:3456/echo", {
-	  method: 'POST',
-	  headers: {'Content-Type': 'application/json'},
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
       body: request,
     });
     if (!result.ok) throw new Error('Request failed');
-    result = (await result.json()).json;
+    result = await result.json();
     console.log(`Received`, result);
     return result;
   } catch (error) {
