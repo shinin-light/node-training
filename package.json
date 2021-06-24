@@ -1,0 +1,9 @@
+{
+  "name": "node-training",
+  "scripts": {
+    "start_server": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
